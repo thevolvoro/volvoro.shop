@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Volvoro- Fashion E-commerce</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif}
+    body{background:#f5f7fa;color:#333;line-height:1.6}
+
+    /* Header */
+    header{background:#fff;padding:20px 50px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:1000}
+    header h1{font-size:24px;color:#0077b6}
+    nav ul{list-style:none;display:flex;gap:25px;flex-wrap:wrap}
+    nav a{text-decoration:none;color:#333;font-weight:500}
+    nav a:hover{color:#0077b6}
+
+    /* Hero */
+    .hero{background:url('https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?fit=crop&w=1600&q=80') center/cover no-repeat;height:70vh;display:flex;justify-content:center;align-items:center;color:white;text-align:center;padding:0 20px}
+    .hero h2{font-size:48px;max-width:800px}
+    .hero p{margin-top:10px;font-size:20px}
+    .hero a{display:inline-block;margin-top:20px;background:#0077b6;color:white;padding:12px 25px;text-decoration:none;border-radius:25px;font-size:16px}
+    .hero a:hover{background:#023e8a}
+
+    section{padding:60px 20px}
+
+    /* About */
+    .about{display:flex;gap:40px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+    .about img{width:100%;max-width:500px;border-radius:10px}
+    .about-text{flex:1}
+    .about h3{font-size:28px;margin-bottom:15px;color:#0077b6}
+
+    /* Services */
+    .services{background:#fff;text-align:center}
+    .services h3{font-size:30px;margin-bottom:40px;color:#0077b6}
+    .service-cards{display:flex;gap:30px;max-width:1100px;margin:0 auto;flex-wrap:wrap}
+    .card{background:#f8f9fa;padding:20px;flex:1;min-width:250px;border-radius:8px;transition:transform .3s ease}
+    .card:hover{transform:translateY(-5px)}
+
+    /* Categories */
+    .categories{background:#f0f4f8;text-align:center}
+    .categories h3{font-size:30px;margin-bottom:40px;color:#0077b6}
+    .category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+    .category-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:transform .3s ease,box-shadow .3s ease;cursor:pointer}
+    .category-card:hover{transform:translateY(-5px);box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+    .category-card img{width:100%;height:220px;object-fit:cover}
+    .category-card h4{padding:15px;font-size:18px;color:#023e8a}
+
+    /* Reviews */
+    .reviews{background:#f0f4f8}
+    .reviews h3{text-align:center;font-size:30px;margin-bottom:40px;color:#0077b6}
+    .review-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;max-width:1100px;margin:0 auto}
+    .review-card{background:white;padding:20px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+    .stars{color:gold;font-size:18px;margin-bottom:10px}
+    .review-photo{width:100%;max-height:180px;object-fit:cover;border-radius:8px;margin-top:10px}
+    .review-author{margin-top:8px;font-weight:bold;color:#0077b6}
+
+    /* Review Form */
+    .review-form{margin-top:50px;max-width:600px;background:white;padding:20px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-left:auto;margin-right:auto}
+    .review-form label{display:block;margin:10px 0 5px;font-weight:500}
+    .review-form input,.review-form textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px}
+    .review-form input[type="file"]{padding:4px}
+    .review-form button{margin-top:15px;padding:12px 20px;background:#0077b6;color:white;border:none;border-radius:6px;font-size:16px;cursor:pointer}
+    .review-form button:hover{background:#023e8a}/* Login */
+    .login-section{background:#fff;max-width:400px;margin:50px auto;padding:30px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+    .login-section h3{text-align:center;margin-bottom:20px;color:#0077b6}
+    .login-section label{display:block;margin:10px 0 5px;font-weight:500}
+    .login-section input{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px}
+    .login-section .extras{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:14px}
+    .login-section a{color:#0077b6;text-decoration:none}
+    .login-section button{width:100%;margin-top:15px;padding:12px;background:#0077b6;color:white;border:none;border-radius:6px;font-size:16px;cursor:pointer}
+    .login-section button:hover{background:#023e8a}
+
+    /* Payment */
+    .payment-section{background:#fff;padding:40px 20px;text-align:center}
+    .payment-section h3{font-size:28px;color:#0077b6;margin-bottom:20px}
+    .payment-box{max-width:400px;margin:0 auto;text-align:left;background:#f8f9fa;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+    .payment-box input[type="number"]{width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;margin-bottom:15px}
+    .payment-box label{display:block;margin-top:8px}
+    .pay-btn{margin-top:20px;width:100%;background:#0077b6;color:white;padding:10px;border:none;border-radius:6px;font-size:16px;cursor:pointer}
+    .pay-btn:hover{background:#023e8a}
+
+    /* Footer */
+    footer{background:#023e8a;color:white;text-align:center;padding:25px 10px;margin-top:60px}
+
+    @media(max-width:768px){
+      .about{flex-direction:column;text-align:center}
+      nav ul{flex-direction:column;gap:10px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Volvoro </h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#categories">Collections</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#payment">Payment</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h2>Step Into Style with Volvoro Clothing</h2>
+      <p>Latest trends, premium fabrics, and timeless designs for every occasion.</p>
+      <a href="#categories">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <h3>Why Shop With Us</h3>
+    <div class="service-cards">
+      <div class="card"><h4>Premium Fabrics</h4><p>Experience comfort and durability with our carefully selected materials.</p></div>
+      <div class="card"><h4>Latest Trends</h4><p>Stay ahead with seasonal collections designed by top fashion experts.</p></div>
+      <div class="card"><h4>Easy Returns</h4><p>Worry-free returns and exchanges with our friendly policy.</p></div>
+    </div>
+  </section>
+
+  <!-- Categories (Collections) -->
+  <section id="categories" class="categories">
+    <h3>Shop by Collection</h3>
+    <div class="category-grid">
+      <div class="category-card"><img src="C:\Users\vinod\Downloads\6075621335347872239.JPG"><h4>OVERSIZED T-SHIRT</h4></div><div class="category-card"><img src="C:\Users\vinod\Downloads\20250730_223206_0000.PNG"><h4>POLO T-SHIRTS</h4></div>
+      <div class="category-card"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?fit=crop&w=500&q=80"><h4>REGULAR T-SHIRTS</h4></div>
+      <div class="category-card"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?fit=crop&w=500&q=80"><h4>HOODIES</h4></div>
+    </div>
+  </section>
+<!-- New Arrival Section Start -->
+<section id="new-arrivals" style="background:#fff8f5;padding:60px 20px;">
+  <h3 style="text-align:center;font-size:30px;color:#d35400;margin-bottom:40px;letter-spacing:2px;">
+    <span style="border-bottom:3px solid #d35400;padding-bottom:4px;">New Arrivals</span>
+  </h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;max-width:1100px;margin:0 auto;">
+    <!-- Product Card -->
+    <div style="background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:transform .3s;cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?fit=crop&w=600&q=80" style="width:100%;height:260px;object-fit:cover;">
+      <div style="padding:18px;">
+        <h4 style="font-size:18px;color:#222;">Classic Checked Shirt</h4>
+        <p style="color:#888;font-size:14px;">Men's Collection</p>
+        <p style="font-weight:bold;color:#d35400;font-size:16px;margin:12px 0 0;">₹1,199</p>
+      </div>
+    </div>
+    <!-- Repeat Product Cards -->
+    <div style="background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:transform .3s;cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1516822003754-cca485356ecb?fit=crop&w=600&q=80" style="width:100%;height:260px;object-fit:cover;">
+      <div style="padding:18px;">
+        <h4 style="font-size:18px;color:#222;">Floral Summer Dress</h4>
+        <p style="color:#888;font-size:14px;">Women's Collection</p>
+        <p style="font-weight:bold;color:#d35400;font-size:16px;margin:12px 0 0;">₹1,499</p>
+      </div>
+    </div>
+    <div style="background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:transform .3s;cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?fit=crop&w=600&q=80" style="width:100%;height:260px;object-fit:cover;">
+      <div style="padding:18px;">
+        <h4 style="font-size:18px;color:#222;">Kids' Hoodie</h4>
+        <p style="color:#888;font-size:14px;">Kids Collection</p>
+        <p style="font-weight:bold;color:#d35400;font-size:16px;margin:12px 0 0;">₹799</p>
+      </div>
+    </div>
+    <div style="background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:transform .3s;cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1520975542122-28c646c6c81c?fit=crop&w=600&q=80" style="width:100%;height:260px;object-fit:cover;">
+      <div style="padding:18px;">
+        <h4 style="font-size:18px;color:#222;">Bold Stripe T-Shirt</h4>
+        <p style="color:#888;font-size:14px;">Men's Collection</p>
+        <p style="font-weight:bold;color:#d35400;font-size:16px;margin:12px 0 0;">₹899</p>
+      </div>
+    </div>
+    <!-- Add more product cards if needed -->
+  </div>
+</section>
+<!-- New Arrival Section End -->
+
+
+  <!-- Reviews -->
+  <section id="reviews" class="reviews">
+    <h3>Customer Reviews</h3>
+    <div class="review-list">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Absolutely love the quality and the fit. Volvoro Clothing is my go-to brand now!</p>
+        <img src="https://images.unsplash.com/photo-1516822003754-cca485356ecb?fit=crop&w=400&q=80" class="review-photo">
+        <div class="review-author">— Priya Sharma</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p>Trendy and comfortable! Customer service is amazing too.</p>
+        <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?fit=crop&w=400&q=80" class="review-photo">
+        <div class="review-author">— Arjun Mehta</div>
+      </div>
+    </div>
+    <div class="review-form">
+      <h4>Leave a Review</h4>
+      <label>Your Name</label><input type="text" placeholder="Enter your name">
+      <label>Your Rating (1-5)</label><input type="number" min="1" max="5">
+      <label>Your Review</label><textarea rows="4" placeholder="Write your feedback"></textarea>
+      <label>Upload a Photo</label><input type="file">
+      <button type="submit">Submit Review</button>
+    </div>
+  </section>
+<!-- About -->
+  <section id="about" class="section" style="max-width: 1000px; margin: auto; padding: 40px 20px;">
+  <h2 style="text-align:center; font-size: 32px; margin-bottom: 20px;">About VOLVORO – The Future of Oversized Fashion</h2>
+  
+  <p style="font-size: 18px; line-height: 1.8; margin-bottom: 30px;">
+    Welcome to <strong>VOLVORO</strong>, where streetwear meets luxury, and oversized fashion becomes a statement of individuality. Born from a vision to redefine everyday essentials, VOLVORO is not just a clothing brand—it’s a lifestyle movement crafted for those who walk with confidence, think differently, and express boldly.
+  </p>
+
+  <h3 style="font-size: 24px; margin-bottom: 10px;">🧵 Crafted for the Bold</h3>
+  <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px;">
+    At the core of VOLVORO lies a commitment to premium craftsmanship and timeless design. Every piece is tailored using <strong>high-GSM, 100% cotton fabrics</strong>, ensuring maximum comfort, breathability, and durability. From our iconic oversized tees to curated drops, each product is thoughtfully engineered to make you feel as good as you look.
+  </p>
+
+  <h3 style="font-size: 24px; margin-bottom: 10px;">🌍 Inspired by the Streets. Made for the World.</h3>
+  <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px;">
+    Influenced by global street cultures and refined through modern Indian creativity, VOLVORO blends raw urban energy with minimalist luxury. Whether it's monochrome palettes or graphic storytelling, our collections are built to transcend trends and seasons.
+  </p>
+
+  <h3 style="font-size: 24px; margin-bottom: 10px;">🖤 What Makes VOLVORO Unique?</h3>
+  <ul style="font-size: 16px; line-height: 1.8; margin-left: 20px; margin-bottom: 25px;">
+    <li>Oversized silhouettes that flatter all body types and elevate streetwear aesthetics.</li>
+    <li>Premium quality materials sourced responsibly, stitched with precision.</li>
+    <li>Signature designs—from subtle embroidered logos to bold back prints.</li>
+    <li>Limited-edition drops with a focus on individuality and uniqueness.</li>
+    <li>Smooth digital experience with secure payments, real-time order tracking, and pan-India delivery.</li>
+  </ul>
+
+  <h3 style="font-size: 24px; margin-bottom: 10px;">🚀 Our Mission</h3>
+  <p style="font-size: 16px; line-height: 1.7; margin-bottom: 25px;">
+    We aim to empower a generation to wear what they believe. Through clean cuts, fearless fits, and a brand philosophy that celebrates boldness, VOLVORO is designed for the distinct—those who don’t follow trends but define them.
+  </p>
+
+  <h3 style="font-size: 24px; margin-bottom: 10px;">💬 The VOLVORO Voice</h3>
+  <p style="font-size: 18px; font-style: italic; line-height: 1.6;">
+    “Crafted for the bold. Worn by the distinct. This is VOLVORO.”
+  </p>
+<h3 style="font-size: 24px; margin-bottom: 10px;">💬 The VOLVORO OWNER</h3>
+  <p style="font-size: 18px; font-style: italic; line-height: 1.6;">
+ FOUNDER: VINAY SINGH <BR>
+ CO FOUNDER: AYUSH SINGH<BR>
+ CEO:  RAJEEV SINGH 
+</P> 
+
+
+    <!-- Footer -->
+  <footer id="contact">
+    <p>&copy; 2025 Volvoro Clothing. All rights reserved.</p>
+    <p>Email: contact@thevolvoro@gmail.com | Phone: +91-8434903291</p>
+  </footer>
+</body>
+</html>
